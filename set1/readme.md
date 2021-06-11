@@ -5,3 +5,4 @@ Wrote a python script that prints "Hello World!"
 Ran tests on the completion of set1 and  passed/attempted all tests - confusion on what tests were and which I did not complete 
 Ctrl + S saves only on the computer
 Commit and push saves versions/backups on cloud
+Pulling and updating tests for set 1 and passed/attempted tests
