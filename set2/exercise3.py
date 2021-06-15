@@ -114,7 +114,13 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+    listnumber = []
+    for i in range(10):
+        listrow = []
+        for j in range(10):
+            listrow.append(i)
+        listnumber.append(listrow)
+    return listnumber
 
 
 def loops_4():
@@ -134,7 +140,13 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    listnumber1 = []
+    for i in range(10):
+        listrow1 = []
+        for j in range(10):
+            listrow1.append(j)
+        listnumber1.append(listrow1)
+    return listnumber1
 
 
 def loops_5():
@@ -161,7 +173,13 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    cordnumber = []
+    for i in range(10):
+        cordrow = []
+        for j in range(5):
+            cordrow.append("(i{}, j{})".format(i, j))
+        cordnumber.append(cordrow)
+    return cordnumber
 
 
 def loops_6():
@@ -184,7 +202,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    wedgelist = []
+    for i in range(10):
+        wedgerow = []
+        for j in range(i):
+            wedgerow.append(j)
+        wedgelist.append(wedgerow)
+    return wedgelist
 
 
 def loops_7():
