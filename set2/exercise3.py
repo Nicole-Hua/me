@@ -177,7 +177,7 @@ def loops_5():
     for i in range(10):
         cordrow = []
         for j in range(5):
-            cordrow.append("(i{}, j{})".format(i, j))
+            cordrow.append(f"(i{i}, j{j})")
         cordnumber.append(cordrow)
     return cordnumber
 
@@ -202,13 +202,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    wedgelist = []
+    outer_list = []
     for i in range(10):
-        wedgerow = []
-        for j in range(i):
-            wedgerow.append(j)
-        wedgelist.append(wedgerow)
-    return wedgelist
+        inner_list = []
+        for j in range(i + 1):
+            inner_list.append(j)
+        outer_list.append(inner_list)
+    return outer_list
 
 
 def loops_7():
