@@ -114,13 +114,13 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    listnumber = []
+    listrow = []
     for i in range(10):
-        listrow = []
+        listcolumn = []
         for j in range(10):
-            listrow.append(i)
-        listnumber.append(listrow)
-    return listnumber
+            listcolumn.append(str(i))
+        listrow.append(listcolumn)
+    return listrow
 
 
 def loops_4():
@@ -144,7 +144,7 @@ def loops_4():
     for i in range(10):
         listrow1 = []
         for j in range(10):
-            listrow1.append(j)
+            listrow1.append(str(j))
         listnumber1.append(listrow1)
     return listnumber1
 
@@ -173,13 +173,13 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    cordnumber = []
+    listrow = []
     for i in range(10):
-        cordrow = []
+        listcolumn = []
         for j in range(5):
-            cordrow.append(f"(i{i}, j{j})")
-        cordnumber.append(cordrow)
-    return cordnumber
+            listcolumn.append(f"(i{str(i)}, j{str(j)})")
+        listrow.append(listcolumn)
+    return listrow
 
 
 def loops_6():
@@ -206,7 +206,7 @@ def loops_6():
     for i in range(10):
         inner_list = []
         for j in range(i + 1):
-            inner_list.append(j)
+            inner_list.append(str(j))
         outer_list.append(inner_list)
     return outer_list
 
@@ -232,7 +232,15 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    row = []
+    for i in range(5):
+        column = []
+        for j in range(4 - i):
+            column.append(" ")
+        for k in range((2 * i) + 1):
+            column.append("*")
+        row.append(column)
+    return row
 
 
 def little_printer(some_kind_of_list, exercise_name):
