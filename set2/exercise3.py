@@ -240,12 +240,23 @@ def loops_7():
         pyramid_column = []
         for j in range(4 - i):
             pyramid_column.append(" ")
-        for k in range((2 * i) + 1)):
+        for k in range((2 * i) + 1):
             pyramid_column.append("*")
         for m in range(4 - i):
             pyramid_column.append(" ")
         pyramid_row.append(pyramid_column)
     return pyramid_row
+
+    # pyramid_row = []
+    # for i in range(5):
+    #     pyramid_column = []
+    #     for j in range(9):
+    #         if j < 5 + i and j > 3 - i:
+    #             pyramid_column.append("x")
+    #         else:
+    #             pyramid_column.append("*")
+    #     pyramid_row.append(pyramid_column)
+    # return pyramid_row
 
 
 def little_printer(some_kind_of_list, exercise_name):
