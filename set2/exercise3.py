@@ -238,11 +238,11 @@ def loops_7():
     pyramid_row = []
     for i in range(5):
         pyramid_column = []
-        for j in range(4 - int(str(i))):
+        for j in range(4 - i):
             pyramid_column.append(" ")
-        for k in range((2 * int(str(i))) + 1):
+        for k in range((2 * i) + 1)):
             pyramid_column.append("*")
-        for m in range(4 - int(str(i))):
+        for m in range(4 - i):
             pyramid_column.append(" ")
         pyramid_row.append(pyramid_column)
     return pyramid_row
