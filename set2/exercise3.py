@@ -2,6 +2,9 @@
 """Modify each function until the tests pass."""
 
 
+from string import ascii_uppercase
+
+
 def is_odd(a_number):
     """Return True if a_number is odd, and False if a_number is even.
 
@@ -232,15 +235,17 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    row = []
+    pyramid_row = []
     for i in range(5):
-        column = []
-        for j in range(4 - i):
-            column.append(" ")
-        for k in range((2 * i) + 1):
-            column.append("*")
-        row.append(column)
-    return row
+        pyramid_column = []
+        for j in range(4 - int(str(i))):
+            pyramid_column.append(" ")
+        for k in range((2 * int(str(i))) + 1):
+            pyramid_column.append("*")
+        for m in range(4 - int(str(i))):
+            pyramid_column.append(" ")
+        pyramid_row.append(pyramid_column)
+    return pyramid_row
 
 
 def little_printer(some_kind_of_list, exercise_name):
