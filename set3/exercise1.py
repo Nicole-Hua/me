@@ -5,14 +5,20 @@ Modify each function until the tests pass.
 """
 
 
+from typing import Type
+
+
 def loop_ranger(start, stop=None, step=1):
     """Return a list of numbers between start and stop in steps of step.
 
     Do this using any method apart from JUST using range() #TODO: clarify this wording
-    The look up the docs for range(), you can answer this with just the range 
+    The look up the docs for range(), you can answer this with just the range
     function, but we'd like you to do it the long way, probably using a loop.
     """
-    return None
+    list1 = []
+    for i in range(start, stop, step):
+        list1.append(i)
+    return list1
 
 
 def lone_ranger(start, stop, step):
@@ -20,7 +26,10 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    return None
+    list2 = []
+    for i in range(start, stop, step):
+        list2.append(i)
+    return list2
 
 
 def two_step_ranger(start, stop):
@@ -29,7 +38,10 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    return None
+    list3 = []
+    for i in range(start, stop, 2):
+        list3.append(i)
+    return list3
 
 
 def stubborn_asker(low, high):
@@ -40,17 +52,34 @@ def stubborn_asker(low, high):
 
     Look up the docs for input
     """
-    return None
+    message = "Give me a number between {}, and {}: ".format(low, high)
+    # f"{Give me a number between {low}, and {high}: }"
+
+    while True:
+        number = int(input(message))
+        if low < number < high:
+            print("{} Looks good!".format(number))
+            # print(f"{input_number} Looks good!")
+            return number
+        else:
+            print("{} isn't between {}, and {}".format(number, low, high))
+            # print(f"{input_number} isn't between {low}, and {high}: ")
 
 
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
 
-    Ask for a number, and if the response is actually NOT a number 
+    Ask for a number, and if the response is actually NOT a number
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    while True:
+        try:
+            number = int(input(message))
+            print("{} Looks good!".format(number))
+            return number
+        except Exception as e:
+            print("This isn't a number. Try again!, {}".format(e))
 
 
 def super_asker(low, high):
