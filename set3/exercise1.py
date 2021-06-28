@@ -52,17 +52,16 @@ def stubborn_asker(low, high):
 
     Look up the docs for input
     """
-    message = "Give me a number between {}, and {}: ".format(low, high)
-    # f"{Give me a number between {low}, and {high}: }"
+    message = f"Give me a number between {low}, and {high}: "
 
     while True:
         number = int(input(message))
         if low < number < high:
-            print("{} Looks good!".format(number))
+            print(f"{number} Looks good!")
             # print(f"{number} Looks good!")
             return number
         else:
-            print("{} isn't between {}, and {}".format(number, low, high))
+            print(f"{number} isn't between {low}, and {high}")
             # print(f"{number} isn't between {low}, and {high}: ")
 
 
@@ -76,10 +75,10 @@ def not_number_rejector(message):
     while True:
         try:
             number = int(input(message))
-            print("{} Looks good!".format(number))
+            print(f"{number} Looks good!")
             return number
         except Exception as general_error:
-            print("This isn't a number. Try again!, {}".format(general_error))
+            print(f"This isn't a number. Try again!, {general_error}")
 
 
 def super_asker(low, high):
@@ -90,7 +89,7 @@ def super_asker(low, high):
     Try to call at least one of the other functions to minimise the
     amount of code.
     """
-    message = "Give me a number between {}, and {}: ".format(low, high)
+    message = f"Give me a number between {low}, and {high}: "
 
     while True:
         try:
@@ -101,7 +100,7 @@ def super_asker(low, high):
             else:
                 print(f"{number} isn't between {low}, and {high}: ")
         except Exception as general_error:
-            print("This isn't a number. Try again!, {}".format(general_error))
+            print(f"This isn't a number. Try again!, {general_error}")
 
 
 if __name__ == "__main__":
