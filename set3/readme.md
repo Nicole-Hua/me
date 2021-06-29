@@ -21,3 +21,7 @@ Exercise 2:
 Exercise 3:
 
 Exercise 4:
+--> Makes use of Exercise 2
+--> while loop condition needs to be low < high:
+--> Need tries += 1 for each if/elif/else so it can count each try
+-->
