@@ -32,27 +32,19 @@ def binary_search(low, high, actual_number):
     print("\nWelcome to the guessing game!")
     print(f"Guess a number between {low} and {high} ?")
 
-    # actual_number = random.randint(low, high)
-
-    guess = False
-
-    min = int(low + 1)
-    max = int(high - 1)
-
-    while not guess:
-        mid = (min + max) // 2
-        # not_number_rejector("Guess a number: ")
-        print(f"You guessed {mid}")
-        if mid == actual_number:
+    while low < high:
+        mid = (low + high) // 2
+        guess = mid
+        if guess == actual_number:
             print(f"You got it!! It was {actual_number}")
-            guess = True
-        elif mid < actual_number:
-            min = mid + 1
-            print("Too small, try again!")
+            tries += 1
+            break
+        elif guess < actual_number:
+            low = mid + 1
+            tries += 1
         else:
-            max = mid - 1
-            print("Too big, try again!")
-        tries = tries + 1
+            high = mid - 1
+            tries += 1
     return {"guess": guess, "tries": tries}
 
 
