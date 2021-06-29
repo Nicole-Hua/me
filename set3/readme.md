@@ -23,5 +23,5 @@ Exercise 3:
 Exercise 4:
 --> Makes use of Exercise 2
 --> while loop condition needs to be low < high:
---> Need tries += 1 for each if/elif/else so it can count each try
+--> Need tries += 1 for each if/elif/else so it can count each try or add at the end of the while loop to minimise coding
 -->
