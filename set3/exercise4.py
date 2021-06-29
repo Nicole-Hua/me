@@ -37,14 +37,12 @@ def binary_search(low, high, actual_number):
         guess = mid
         if guess == actual_number:
             print(f"You got it!! It was {actual_number}")
-            tries += 1
             break
         elif guess < actual_number:
             low = mid + 1
-            tries += 1
         else:
             high = mid - 1
-            tries += 1
+        tries += 1
     return {"guess": guess, "tries": tries}
 
 
