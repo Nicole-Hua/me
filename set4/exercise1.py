@@ -33,10 +33,18 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
+    with open(LOCAL + "/lazyduck.json", "r", encoding="utf-8") as f:
+        json_data = f.read()
+    # json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+
+    last = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    postcode = data["results"][0]["location"]["postcode"]
+    id = int(data["results"][0]["id"]["value"])
+
+    return {"lastName": last, "password": password, "postcodePlusID": postcode + id}
 
 
 def wordy_pyramid():
@@ -73,17 +81,49 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
-    pass
+    pyramid = []
+    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={}"
+    # value at end of URL determines the word length - needs to be formatted to change its value in the loop
+
+    for i in range(3, 21, 2):
+        r = requests.get(url.format(i))
+        first_half = r.text
+        pyramid.append(first_half)
+
+    for i in range(20, 3, -2):
+        r = requests.get(url.format(i))
+        second_half = r.text
+        pyramid.append(second_half)
+
+    return pyramid
+
+    # alternative method using refractor - easier to read visually without having to have double up on the same coding
+    # pyramid = []
+    #
+    # for i in range(3,21,2): (first half > values in the range are the start, stop, step to create the pyramid)
+    #   word = get_a_word(i)
+    #   pyramid.append(word)
+    #
+    # for i in range(20,3,-2): (second half of pyramid)
+    #   word = get_a_word(i)
+    #   pyramid.append(word)
+    #
+    # def get_a_word(i):
+    #   url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={}"
+    #   response = requests.get(url.format(i))
+    #   word = response.text
+    #
+    #   return word
 
 
 def pokedex(low=1, high=5):
-    """ Return the name, height and weight of the tallest pokemon in the range low to high.
+    """Return the name, height and weight of the tallest pokemon in the range low to high.
 
     Low and high are the range of pokemon ids to search between.
     Using the Pokemon API: https://pokeapi.co get some JSON using the request library
     (a working example is filled in below).
     Parse the json and extract the values needed.
-    
+
     TIP: reading json can someimes be a bit confusing. Use a tool like
          http://www.jsoneditoronline.org/ to help you see what's going on.
     TIP: these long json accessors base["thing"]["otherThing"] and so on, can
@@ -91,12 +131,27 @@ def pokedex(low=1, high=5):
          variable and then future access will be easier.
     """
     template = "https://pokeapi.co/api/v2/pokemon/{id}"
+    some_pokemon = []
+    for p in range(low, high):
+        url = template.format(id=p)
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            some_pokemon.append(the_json)
 
-    url = template.format(id=5)
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
-    return {"name": None, "weight": None, "height": None}
+    height_of_tallest_pokemon = 0
+    tallest_pokemon = "🐳"  # windows+. for emoji keyboard on windows10
+    for p in some_pokemon:
+        height = p["height"]
+        if height > height_of_tallest_pokemon:
+            height_of_tallest_pokemon = height
+            tallest_pokemon = p
+
+    return {
+        "name": tallest_pokemon["name"],
+        "weight": tallest_pokemon["weight"],
+        "height": tallest_pokemon["height"],
+    }
 
 
 def diarist():
@@ -113,7 +168,18 @@ def diarist():
          the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
-    pass
+    mode = "r"
+    lasercount = 0
+    with open("set4/Trispokedovetiles(laser).gcode", mode, encoding="utf-8") as gc:
+        lines = gc.readlines()
+
+    for line in lines:
+        if "M10 P1" in line:
+            lasercount += 1
+
+    laser = open("set4\lasers.pew", mode="w")  # creates file to write in
+    laser.write(str(lasercount))
+    laser.close()
 
 
 if __name__ == "__main__":
@@ -127,5 +193,5 @@ if __name__ == "__main__":
             print(function())
         except Exception as e:
             print(e)
-    if not os.path.isfile("lasers.pew"):
+    if not os.path.isfile("set4\lasers.pew"):
         print("diarist did not create lasers.pew")
