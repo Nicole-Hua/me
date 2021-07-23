@@ -118,7 +118,7 @@ def pokedex(low=1, high=5):
         url = template.format(id=p)
         r = requests.get(url)
         if r.status_code is 200:
-            the_json = json.loads(r.text)
+            the_json = json.loads(r.text)  # r.json(r.text)
             some_pokemon.append(the_json)
 
     height_of_tallest_pokemon = 0
